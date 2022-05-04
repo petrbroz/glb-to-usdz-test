@@ -1,0 +1,14 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Experimental setup for converting Glb files to Usdz files.
+Resources:
+  GlbToUsdzFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      PackageType: Image
+      MemorySize: 1024
+      Timeout: 600
+    Metadata:
+      Dockerfile: Dockerfile
+      DockerContext: ./glb-to-usdz
+      DockerTag: glb-to-usdz-lambda
