@@ -19,14 +19,10 @@ ARG FUNCTION_DIR
 RUN mkdir -p ${FUNCTION_DIR}
 
 # Install the runtime interface client
-RUN pip install --target ${FUNCTION_DIR} awslambdaric
+RUN pip install --target ${FUNCTION_DIR} awslambdaric requests
 
 # Copy function code
 COPY *.py ${FUNCTION_DIR}/
-
-# Copy testing files
-ADD https://petrbroz.s3.us-west-1.amazonaws.com/glb-to-usdz-issues/snowmobile.glb ${FUNCTION_DIR}/
-ADD https://petrbroz.s3.us-west-1.amazonaws.com/glb-to-usdz-issues/wall-e.glb ${FUNCTION_DIR}/
 
 # Set working directory to function root directory
 WORKDIR ${FUNCTION_DIR}
